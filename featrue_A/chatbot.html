@@ -7,21 +7,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./chatbot.css">
         <script>
+            
+            let chatBotMsgBoxStat = 0;
+
             window.onload = () => {
                 document.getElementById("btn").onclick = processText;
                 //document.getElementById("i_result").innerHTML = result;
             };
 
-            function processText() {
+            const processText =()=> {
+                //어떤 메시지인지 text를 받아오고 그에 따는 if문처리를 switch문으로 대신했습니다.
+                // let userMsgs = document.getElementsByClassName("user_msg");
+                // let nowMsg = userMsgs = userMsgs[userMsgs.length - 1].textContent;
+                // switch(nowMsg){
+                //     case /회원가입/:
+                //         //회원가입일때 처리하는 부분
+                //         const parent = document.getElementsByClassName('chatbot_msg');
+                //         const join = document.createElement(`<input type='button' value='회원 가입' onclick="join()"/>`);
+                //         parent.appendChild(join);
+                //         break;
+                //     case "case1":
+                //         //case1
+                //         break;
+                //     case "case2":
+                //         //case2
+                //         break;
+                //     case "case3":
+                //         //case3
+                //         break;
+                //     default:
+                //         //default case
+                // }
                 let newDiv = document.createElement('div');
                 newDiv.setAttribute("class","user_msg");
 
-                var txtBox = document.getElementById("textarea");
-                var lines = txtBox.value.split("\n");
+                let txtBox = document.getElementById("textarea");
+                let lines = txtBox.value.split("\n");
 
                 // generate HTML version of text
-                var resultString = "<p>";
-                for (var i = 0; i < lines.length; i++) {
+                let resultString = "<p>";
+                for (let i = 0; i < lines.length; i++) {
                     resultString += lines[i] + "<br />";
                 }
                 resultString += "</p>";
@@ -31,24 +56,32 @@
                 new_chatbot_msg(resultString);
             }
 
-            function new_chatbot_msg(str){
+            const new_chatbot_msg=(str)=>{
+                console.log(str);
                 let newDiv = document.createElement('div');
                 newDiv.setAttribute("class","chatbot_msg");
                 newDiv.innerHTML = str;
                 document.getElementsByClassName("chat")[0].appendChild(newDiv);
             }
+
         </script>
     </head>
     <body>
         <script src="" async defer></script>
         <nav class="navbar">
-            <button class="back"><</button>
+            <button class="back"></button>
             <p class="title">I LOVE SCHOOL</p>
         </nav>
         <section class="chat_section">
 
             <div class="chat">
-                <div class="chatbot_msg">로그인이 필요합니다. 아이디를 입력해주세요.</div>
+            
+            <%if(chatBotMsgBoxStat===0){%>
+                <%}else{%>
+                    console.log("hi")
+                    <%}%>
+
+            <div class="chatbot_msg">로그인이 필요합니다. 아이디를 입력해주세요.</div>
                 <div id = "result" class="user_msg" id = "user_message">boostcamp</div>
                 <div class="chatbot_msg">패스워드를 입력해주세요.</div>
                 <div class="user_msg">********</div>
