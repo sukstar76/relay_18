@@ -4,10 +4,13 @@ body {
 }
 
 body nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: darkblue;
     height: 60px;
     display: flex;
-}
+  }
 
 nav .back {
     width: 40px;
