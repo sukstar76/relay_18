@@ -3,7 +3,7 @@ body {
     margin: 0;
 }
 
-body nav {
+body > nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,12 +27,17 @@ nav .title {
     font-weight: 700;
 }
 
+.chat_section {
+    margin-top: 60px;
+}
+
 .chat {
     background-color: cornflowerblue;
     padding: 20px 10px;
-    height: 80vh;
+    min-height: calc(100vh - 150px);
     display: flex;
     flex-direction: column;
+    margin-bottom: 90px;
 }
 
 .user_msg {
