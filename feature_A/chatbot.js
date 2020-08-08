@@ -14,22 +14,22 @@ function removeText() {
 function processText() {
     const newMsg = document.createElement('div');
     newMsg.setAttribute("class", "user_msg");
-    const txtBox = document.getElementById("textarea");
+    const txtBox = document.getElementById("textarea"); 
     const lines = txtBox.value.split("\n");
-
     const resultString = lines.reduce((prev, curr) => {
         return prev + curr + "<br />";
-    }, '')
-    newMsg.innerHTML = resultString;
+    }, '')  
+    newMsg.innerHTML = (STATE === 2) ? '*'.repeat(txtBox.value.length) : resultString;
     document.getElementsByClassName("chat")[0].appendChild(newMsg);
     removeText();
-    if (STATE === 0) new_chatbot_msg(resultString);
+    if (STATE === 0 || STATE === 3) new_chatbot_msg(resultString);
     else if (STATE === 1 || STATE === 2) login_chat(resultString);
 }
 
 function matchString(str) {
     if (str.match(/회원/) || str.match(/가입/)) return 'join';
     else if (str.match(/로그인/)) return 'login';
+    else if (str.match(/친구/) || str.match(/추천/) ) return 'friend';
     else return 'wrong';
 }
 
@@ -40,18 +40,33 @@ function new_chatbot_msg(str){
     const type = matchString(str);
     switch(type){
         case 'join':
-            newDiv.innerHTML = "버튼을 누르면 회원가입 페이지로 넘어갑니다";
+            newDiv.innerHTML = "버튼을 누르면 회원가입 페이지로 넘어갑니다. ";
             const joinBtn = document.createElement('button');
             joinBtn.setAttribute("class", "join_btn");
             joinBtn.appendChild(document.createTextNode("회원가입"));
             joinBtn.addEventListener('click', function(e) {
-                console.log(e);
+                location.href='../main/join.html';
             });
             newDiv.appendChild(joinBtn);                
         break;
         case 'login':
             newDiv.innerHTML = "로그인을 진행합니다.<br>아이디를 입력해주세요.";
             STATE = 1;
+            break;
+        case 'friend' :
+            if (STATE !== 3) {
+                newDiv.innerHTML = "친구추천 기능은 로그인이 필요합니다.<br>아이디를 입력해주세요.";
+                STATE = 1;
+            } else {
+                newDiv.innerHTML = "버튼을 누르면 친구추천 페이지로 이동합니다. ";
+                const friendBtn = document.createElement('button');
+                friendBtn.setAttribute("class", "join_btn");
+                friendBtn.appendChild(document.createTextNode("친구추천"));
+                friendBtn.addEventListener('click', function(e) {
+                    location.href='../FriendReco/FriendReco.html';
+                });
+                newDiv.appendChild(friendBtn); 
+            }
             break;
         case 'wrong' :
         default:
@@ -84,6 +99,7 @@ function login_chat_msg(state) {
             break;
         case 2:
             newDiv.innerHTML = "로그인이 완료되었습니다.";
+            STATE = 3;
             break;
     }
     document.getElementsByClassName("chat")[0].appendChild(newDiv);
