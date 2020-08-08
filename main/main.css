@@ -1,8 +1,28 @@
+body {
+    background-color: rgb(21,23,87);
+}
+
+.title {
+    width: 80vw;
+    line-height: 10vh; 
+    margin: auto;
+    margin-top: 30vh;
+    text-align:center; 
+    min-height: 400px;
+    color: rgb(255,212,0);
+}
+
+.title > h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
 .styled {
+    margin: 10px auto;
     border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
+    line-height: 60px;
+    padding: 10px 30px;
+    font-size: 30px;
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;

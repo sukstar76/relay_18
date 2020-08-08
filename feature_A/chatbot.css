@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(220, 220, 220);
     margin: 0;
 }
 
@@ -7,7 +7,7 @@ body > nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: darkblue;
+    background-color: rgb(21,23,87);
     height: 60px;
     display: flex;
   }
@@ -61,7 +61,11 @@ nav .title {
 
 .chatbot_msg .join_btn {
     outline: none;
-    background-color: black;
+    background-color: rgb(21,23,87);
+    border: none;
+    line-height: 25px;
+    border-radius: 10px;
+    color: white;
 }
 
 .user_input {
