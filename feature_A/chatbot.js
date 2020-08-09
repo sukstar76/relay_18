@@ -1,5 +1,7 @@
 window.onload = () => {
     document.getElementById("btn").onclick = processText;
+    localStorage.setItem('id','boostcamp');
+    localStorage.setItem('pw','boostcamp');
     //document.getElementById("i_result").innerHTML = result;
 };
 
@@ -76,15 +78,24 @@ function new_chatbot_msg(str){
 }
 
 function login_chat(resultString) {
+    resultString = resultString.substring(0,resultString.length-6)
+    let newDiv = document.createElement('div');
+    newDiv.setAttribute("class","chatbot_msg");
     if (STATE === 1) {
-        const tempData = { id: resultString, password: null};
-        localStorage.setItem('temp', JSON.stringify(tempData));
-        STATE = 2;
-        return login_chat_msg(1);
+        const idOnStorage = localStorage.getItem('id');
+        localStorage.setItem('tmpId',resultString);
+        if (idOnStorage === resultString){
+            STATE = 2;
+            return login_chat_msg(1,idOnStorage);
+        }else{
+            STATE = 1;
+            return login_chat_msg(3);
+        }
     } else if (STATE === 2) {
-        const prevData = JSON.parse(localStorage.getItem('temp'));
-        prevData.password = resultString;
-        localStorage.setItem('temp', JSON.stringify(prevData));
+        const pwOnStorage = localStorage.getItem('pw');
+        if(pwOnStorage !== resultString ){
+            return login_chat_msg(4);
+        }
         return login_chat_msg(2);
     }
 }
@@ -101,6 +112,13 @@ function login_chat_msg(state) {
             newDiv.innerHTML = "로그인이 완료되었습니다.";
             STATE = 3;
             break;
+        case 3: 
+            newDiv.innerHTML = '존재하지 않는 아이디입니다.<br>다시 입력해주세요';
+            STATE = 1;
+            break;
+        case 4: 
+            newDiv.innerHTML = '잘못된 비밀번호입니다.<br>다시 입력해주세요';
+            STATE = 2;
     }
     document.getElementsByClassName("chat")[0].appendChild(newDiv);
 }
