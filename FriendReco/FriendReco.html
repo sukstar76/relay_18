@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="=UTF-8">
+    <title>friends recommandation</title>
+    <style>
+        .head{
+            padding : 50px;
+            margin: 30px auto;
+            font-size: 30px;
+        }
+        body{
+            background-color:rgb(255,212,0);
+            width: 100%;
+            text-align: center;
+            margin : 0 auto;
+            font-size: 17px;
+        }
+        input{
+            border: none;
+            background-color: transparent;
+            border-bottom: solid 3px #587DF8;
+            line-height: 50px;
+            padding: 0 10px;
+            outline: none;
+        }
+        .button {
+                width: 90px;
+                background-color: #587DF8;
+                border: none;
+                color:#fff;
+                padding: 10px 0;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px;
+                cursor: pointer;
+                border-radius:40px;
+                outline: none;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        
+        function check(){
+            let submitButton = document.getElementById("submit")
+            let school = document.getElementById("school").value
+            let regex = /^[가-힇]+$/gi
+            if(!school.match(regex)){
+                alert("학교를 입력하세요.")
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 class = 'head'>친구의 정보를 입력해주세요!</h1> 
+    <section class="form_section">
+        <form name = 'friendsInputForm' id='recomm_form'>
+            <input type='text' name='school_name'  id='school' placeholder='학교명'  style="width:300px;"><br><br><br>
+            <input type='text' name='friend_name' class='friend_name' id = 'friendname1' placeholder="친구 이름1"  style="width:300px;"><br><br><br>
+            <input type='text' name='friend_name' class='friend_name' id = 'friendname2' placeholder="친구 이름2"  style="width:300px;"><br><br><br>
+            <input type='text' name='friend_name' class='friend_name' id = 'friendname3' placeholder="친구 이름3"  style="width:300px;"><br><br><br><br>
+            <button class = "button" type="submit" id = 'submit' onclick = "check()">친구 추천</button> &emsp;
+            <button class = "button" type="reset">초기화</button>
+        </form>
+    </section>
+</body>
+</html>
