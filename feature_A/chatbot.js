@@ -31,6 +31,7 @@ function processText() {
 function matchString(str) {
     if (str.match(/회원/) || str.match(/가입/)) return 'join';
     else if (str.match(/로그인/)) return 'login';
+    else if (str.match(/사용법/) || str.match(/사용/) || str.match(/뭐/)  ) return 'menu';
     else if (str.match(/친구/) || str.match(/추천/) ) return 'friend';
     else return 'wrong';
 }
@@ -41,6 +42,9 @@ function new_chatbot_msg(str){
 
     const type = matchString(str);
     switch(type){
+        case 'menu':
+            newDiv.innerHTML = "회원가입, 로그인, 친구 찾기를 할 수 있습니다.";
+            break;
         case 'join':
             newDiv.innerHTML = "버튼을 누르면 회원가입 페이지로 넘어갑니다. ";
             const joinBtn = document.createElement('button');
@@ -50,7 +54,7 @@ function new_chatbot_msg(str){
                 location.href='../main/join.html';
             });
             newDiv.appendChild(joinBtn);                
-        break;
+            break;
         case 'login':
             newDiv.innerHTML = "로그인을 진행합니다.<br>아이디를 입력해주세요.";
             STATE = 1;
