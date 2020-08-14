@@ -24,7 +24,7 @@
             return response.json(); // parses JSON response into native JavaScript objects
             }
 
-            postData('https://example.com/answer', { answer: 42 })
+            postData('/backend/users', { answer: 42 }) // 나중에 수정해주세요 ^^ :)
             .then(data => {
                 if (data.ok!=true){
                     alert('유효하지 않은 양식입니다.')
@@ -35,13 +35,13 @@
         }
 
         function encode() {
-            var selectedfile = document.getElementById("file").files;
+            let selectedfile = document.getElementById("file").files;
             if (selectedfile.length > 0) {
-                var imageFile = selectedfile[0];
-                var fileReader = new FileReader();
+                let imageFile = selectedfile[0];
+                let fileReader = new FileReader();
                 fileReader.onload = function(fileLoadedEvent) {
-                    var srcData = fileLoadedEvent.target.result;
-                    var newImage = document.createElement('img');
+                    let srcData = fileLoadedEvent.target.result;
+                    let newImage = document.createElement('img');
                     newImage.src = srcData;
                     document.getElementById("dummy").innerHTML = newImage.outerHTML;
                     document.getElementById("txt").value = document.getElementById("dummy").innerHTML;
@@ -87,9 +87,11 @@
             }
             if(inputAddress == "") {
                 alert("주소를 입력하세요!!")
+                return
             }
             if (inputBirthday) {
                 alert("생일을 입력하세요!!")
+                return
             }
             // let path === server_url
             
