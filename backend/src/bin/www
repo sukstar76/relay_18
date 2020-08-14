@@ -8,7 +8,7 @@ require('dotenv').config();
  */
 
 var app = require('../index');
-var debug = require('debug')('relay16:server');
+var debug = require('debug')('restapi:server');
 var http = require('http');
 
 /**
