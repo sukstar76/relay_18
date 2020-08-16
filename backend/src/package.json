@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "ajax": "0.0.4",
+    "axios": "^0.19.2",
     "cookie-parser": "~1.4.4",
     "crypto-promise": "^2.1.0",
     "debug": "~2.6.9",
@@ -17,6 +19,10 @@
     "morgan": "~1.9.1",
     "mysql2": "^2.1.0",
     "node-binance-api": "^0.11.11",
-    "sequelize": "^6.3.4"
+    "sequelize": "^6.3.4",
+    "node-binance-api": "^0.11.11",
+    "node-tesseract-ocr": "^2.0.0",
+    "request": "^2.88.2",
+    "tesseract.js": "^2.1.1"
   }
 }

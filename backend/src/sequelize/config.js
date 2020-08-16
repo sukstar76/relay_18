@@ -3,10 +3,10 @@ require('dotenv')
 
 
 module.exports = {
-  port: process.env.SQL_PORT,
-  username: process.env.SQL_USERNAME,
-  password: process.env.SQL_PASSWORD,
-  database: process.env.SQL_DATABASE,
-  host: process.env.SQL_HOST,
+  port: 5000,
+  username: "boostcamp",
+  password: "relay18!",
+  database: "boostcamp",
+  host:  " db-4n3l7.pub-cdb.ntruss.com",
   dialect: "mysql"
 }
